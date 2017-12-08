@@ -1,8 +1,10 @@
 <?php
 
+//base classes
+
 $fakeOpenHours->day = "Monday";
-$fakeOpenHours->openfrom = 1458;
-$fakeOpenHours->opento = 1558;
+$fakeOpenHours->openfrom = DateTime('2011-01-01T15:03:01.012345Z');
+$fakeOpenHours->opento = DateTime('2011-01-01T15:03:01.012345Z');
 
 $fakeAddress->name = "Standing Stone";
 $fakeAddress->street = "1229 Mifflin";
@@ -32,6 +34,43 @@ $fakeSocial->link = "https://www.facebook.com/";
 $fakeImage->filetype = "png";
 $fakeImage->file = "imgs/pic.png";
 
+//GET
 
+$fakeMemberInfo->memberid = 1;
+$fakeMemberInfo->name = "Pat";
+$fakeMemberInfo->description = "generic person";
+$fakeMemberInfo->image->$fakeImage;
+$fakeMemberInfo->category = array("cat1", "cat2", "cat3");
+$fakeMemberInfo->social = array($fakeSocial, $fakeSocial);
+$fakeMemberInfo->contact = array($fakeContact, $fakeContact);
+
+function getPrivateMemberInfo(){
+    $fakePrivateMember = $fakeMemberInfo;
+    $fakePrivateMember->email = "pat@patmail.com";
+    $fakePrivateMember->subscription = false;
+    return json_encode($fakePrivateMember);
+}
+
+function getPublicMemberInfo(){
+    return json_encode($fakeMemberInfo);
+}
+
+$fakeEvent->eventid = 12;
+$fakeEvent->name = "party";
+$fakeEvent->hostname = "Jones";
+$fakeEvent->hostid = 6;
+$fakeEvent->location = $fakeLocation;
+$fakeEvent->startdatetime = DateTime('2011-01-01T15:03:01.012345Z');
+$fakeEvent->enddatetime = DateTime('2011-01-01T15:03:01.012345Z');
+$fakeEvent->description = "generic event";
+$fakeEvent->agefrom = 18;
+$fakeEvent->ageto = 81;
+$fakeEvent->image = $fakeImage;
+$fakeEvent->price = array($fakePrice, $fakePrice);
+$fakeEvent->category = array("cat4", "cat7", "cat8");
+
+function getEvent(){
+    return json_encode($fakeEvent);
+}
 
 ?>
