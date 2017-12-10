@@ -59,17 +59,15 @@ if($myDbConnection==null)
             switch ($_GET['action'])
             {
                 case "LogIn_SignIn":
-                    include("Headers/HeaderHome.php");
+                    include("Headers/HeaderLogIn_SignIn.php");
                     include("Login/LogIn_SignIn.php");
                     break;
 
                 case "Logging":
-                    include("Headers/HeaderHome.php");
                     include("Login/Logging.php");
                     break;
 
-                case "Signing":
-                    include("Headers/HeaderHome.php");
+                case "Signing":                    
                     include("Login/Signing.php");
                     break;
 

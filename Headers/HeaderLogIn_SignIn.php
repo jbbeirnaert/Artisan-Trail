@@ -8,15 +8,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">Artisan Trail</a>
+                <a class="navbar-brand" href="../Artisan-Trail">Artisan Trail</a>
             </div>
             <div class="navbar-collapse collapse ">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="">Home</a></li>
+                    <li><a href="../Artisan-Trail">Home</a></li>
                     <li><a href="#">Events</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li class="dropdown">
+                    <li class="active dropdown">
                         <?php
                         if(isset($_SESSION['id']))
                         {

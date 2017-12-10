@@ -19,27 +19,27 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['passw
                 else
                 {
                     $myLoginMessageError="Failed to insert the new user in our dataBase !";
-                    include("Headers/HeaderHome.php");
+                    include("Headers/HeaderLogIn_SignIn.php");
                     include("Login/LogIn_SignIn.php");
                 }
             }
             else
             {
                 $myLoginMessageError="The password have to be at leat 8 characters !";
-                include("Headers/HeaderHome.php");
+                include("Headers/HeaderLogIn_SignIn.php");
                 include("Login/LogIn_SignIn.php");
             }
         }else
         {
             $myLoginMessageError="The username already exist.";
-            include("Headers/HeaderHome.php");
+            include("Headers/HeaderLogIn_SignIn.php");
             include("Login/LogIn_SignIn.php");
         }
     }
     else
     {
         $myLoginMessageError="The passwords are differents !";
-        include("Headers/HeaderHome.php");
+        include("Headers/HeaderLogIn_SignIn.php");
         include("Login/LogIn_SignIn.php");
     }
     
@@ -47,7 +47,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['passw
 else
 {
     $myLoginMessageError="Error ...";
-    include("Headers/HeaderHome.php");
+    include("Headers/HeaderLogIn_SignIn.php");
     include("Login/LogIn_SignIn.php");
 }
 
