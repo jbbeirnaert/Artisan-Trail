@@ -1,5 +1,4 @@
 
-    
 <table border="1" cellpadding="10">
     <thead><tr><th>Name</th><th>Host</th><th>Location</th><th>Start</th><th>End</th><th>Description</th><th>Price</th></tr></thead>
     <tbody>
@@ -8,7 +7,8 @@
     $eventIds = json_decode(getEventList(), true);
     foreach($eventIds['eventlist'] as $key): 
         $event = json_decode(getEvent($key));
-        $eventLink = "?action=Event&event_id=".$event->eventid;
+        $eventLink = "Event.php?event_id=".$event->eventid;
+        $personLink = "/People/Person.php?event_id=".$event->hostid;
     ?>
         <tr>
             <td><?php 
@@ -16,7 +16,11 @@
             echo $event->name; 
             echo "</a>";
             ?></td>
-            <td><?php echo $event->hostname; ?></td>
+            <td><?php 
+            echo "<a href='$personLink'>";
+            echo $event->hostname; 
+            echo "</a>";
+            ?></td>
             <td><?php echo $event->location->address->name; ?></td>
             <td><?php echo $event->startdatetime; ?></td>
             <td><?php echo $event->enddatetime; ?></td>
