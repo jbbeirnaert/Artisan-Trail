@@ -70,7 +70,7 @@ function getPublicMemberInfo(){
     $fakeMemberInfo->memberid = 1;
     $fakeMemberInfo->name = "Pat";
     $fakeMemberInfo->description = "generic person";
-    $fakeMemberInfo->image->getImage();
+    $fakeMemberInfo->image = getImage();
     $fakeMemberInfo->category = array("cat1", "cat2", "cat3");
     $fakeMemberInfo->social = array(getSocial(), getSocial());
     $fakeMemberInfo->contact = array(getContact(), getContact());
@@ -85,20 +85,20 @@ function getPrivateMemberInfo(){
 }
 
 function getEvent($id){
-$fakeEvent = new StdClass();
-$fakeEvent->eventid = 12;
-$fakeEvent->name = "party";
-$fakeEvent->hostname = "Jones";
-$fakeEvent->hostid = 6;
-$fakeEvent->location = getLocation();
-$fakeEvent->startdatetime = strtotime('2011-01-01T15:03:01.012345Z');
-$fakeEvent->enddatetime = strtotime('2011-01-01T15:03:01.012345Z');
-$fakeEvent->description = "generic event";
-$fakeEvent->agefrom = 18;
-$fakeEvent->ageto = 81;
-$fakeEvent->image = getImage();
-$fakeEvent->price = array(getPrice(), getPrice());
-$fakeEvent->category = array("cat4", "cat7", "cat8");
+    $fakeEvent = new StdClass();
+    $fakeEvent->eventid = 12;
+    $fakeEvent->name = "party";
+    $fakeEvent->hostname = "Jones";
+    $fakeEvent->hostid = 6;
+    $fakeEvent->location = getLocation();
+    $fakeEvent->startdatetime = strtotime('2011-01-01T15:03:01.012345Z');
+    $fakeEvent->enddatetime = strtotime('2011-01-01T15:03:01.012345Z');
+    $fakeEvent->description = "generic event";
+    $fakeEvent->agefrom = 18;
+    $fakeEvent->ageto = 81;
+    $fakeEvent->image = getImage();
+    $fakeEvent->price = array(getPrice(), getPrice());
+    $fakeEvent->category = array("cat4", "cat7", "cat8");
     switch($id){
         case 12:
             return json_encode($fakeEvent);
@@ -120,4 +120,18 @@ function getEventList(){
     return json_encode($fakeEventList);
 }
 
+function createNewMember($fakeMemberObject){
+    if($fakeMemberObject->password == null
+        ||$fakeMemberObject->email == null
+        ||$fakeMemberObject->member == null
+        ||$fakeMemberObject->member->name == null
+        ||$fakeMemberObject->member->description == null
+    ){
+        return "error";
+    }else {
+    
+    $fakeMemberObject = json_encode($fakeMemberObject);
+    return null; //actual would kick json to server
+    }
+}
 ?>
