@@ -13,10 +13,10 @@
             <div class="navbar-collapse collapse ">
                 <ul class="nav navbar-nav">
                     <li><a href="../Artisan-Trail">Home</a></li>
-                    <li><a href="?action=Events">Events</a></li>
+                    <li class="active"><a href="?action=Events">Events</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li class="active dropdown">
+                    <li class="dropdown">
                         <?php
                         if(isset($_SESSION['id']))
                         {

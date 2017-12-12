@@ -26,6 +26,7 @@ if($myDbConnection==null)
     <?php
     include("DataBase/DataBaseConnection.php");
     include("DataBase/DataBaseFunction.php");
+    include("dummyData.php");
     //because of the session and to have a better understand of the project/code it is easier to create a website with a index, we use the GET variables to know which page include !
     //if the user is already connected we include the second index (listMachines/index.php), if he wanna logout, we destroy the session.
     if(isset($_SESSION['id']))
@@ -39,6 +40,16 @@ if($myDbConnection==null)
                     session_destroy();
                     include("Headers/HeaderHome.php");
                     include("Home/HomePage.php");
+                    break;
+
+                case "Events":
+                    include("Headers/HeaderEvents.php");
+                    include("Events/Events.php");
+                    break;
+
+                case "Event":
+                    include("Headers/HeaderEvents.php");
+                    include('Events/Event.php');
                     break;
 
                 default:
@@ -69,6 +80,16 @@ if($myDbConnection==null)
 
                 case "Signing":                    
                     include("Login/Signing.php");
+                    break;
+
+                case "Events":
+                    include("Headers/HeaderEvents.php");
+                    include("Events/Events.php");
+                    break;
+
+                case "Event":
+                    include("Headers/HeaderEvents.php");
+                    include('Events/Event.php');
                     break;
 
                 default:
