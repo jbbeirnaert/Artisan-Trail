@@ -1,7 +1,7 @@
 <?php
-if(isset($_POST['username']) && isset($_POST['password']))
+if(isset($_POST['email']) && isset($_POST['password']))
 {
-    $myLoginId=userLoginById($_POST['username'], $_POST['password']);
+    $myLoginId=userLoginById($_POST['email'], $_POST['password']);
     if($myLoginId!=-1)
     {
         $_SESSION['id']=$myLoginId;

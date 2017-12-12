@@ -1,47 +1,58 @@
 <?php
-if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['passwordBis']))
+if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['passwordBis']) && isset($_POST['name']) && isset($_POST['description']))
 {
-
-    if($_POST['password']===$_POST['passwordBis'])
+    if($_POST['name']!="" && $_POST['description']!="")
     {
-        if(CheckIfUsernameNotExist($_POST['username']))
+        if($_POST['password']===$_POST['passwordBis'])
         {
-            if(strlen($_POST['password'])>=8)
+            if(CheckIfUsernameNotExist($_POST['email']))
             {
-                $myLoginPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $myLoginId = CreateNewUser($_POST['username'], $myLoginPassword);
-                if($myLoginId!=-1)
+                if(strlen($_POST['password'])>=8)
                 {
-                    $_SESSION['id']=$myLoginId;
-                    include("Headers/HeaderHome.php");
-                    include("Home/HomePage.php");
+                    $myLoginPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    $myLoginId = CreateNewUser($_POST['email'], $myLoginPassword);
+                    if($myLoginId!=-1)
+                    {
+                        $_SESSION['id']=$myLoginId;
+                        include("Headers/HeaderHome.php");
+                        include("Home/HomePage.php");
+                    }
+                    else
+                    {
+                        $myLoginMessageError="Failed to insert the new user in our dataBase !";
+                        include("Headers/HeaderLogIn_SignIn.php");
+                        include("Login/LogIn_SignIn.php");
+                    }
                 }
                 else
                 {
-                    $myLoginMessageError="Failed to insert the new user in our dataBase !";
+                    $myLoginMessageError="The password have to be at leat 8 characters !";
                     include("Headers/HeaderLogIn_SignIn.php");
                     include("Login/LogIn_SignIn.php");
                 }
-            }
-            else
+            }else
             {
-                $myLoginMessageError="The password have to be at leat 8 characters !";
+                $myLoginMessageError="The email already exist.";
                 include("Headers/HeaderLogIn_SignIn.php");
                 include("Login/LogIn_SignIn.php");
             }
-        }else
+        }
+        else
         {
-            $myLoginMessageError="The username already exist.";
+            $myLoginMessageError="The passwords are differents !";
             include("Headers/HeaderLogIn_SignIn.php");
             include("Login/LogIn_SignIn.php");
         }
+
     }
     else
     {
-        $myLoginMessageError="The passwords are differents !";
+        $myLoginMessageError="the name field and description are required !";
         include("Headers/HeaderLogIn_SignIn.php");
         include("Login/LogIn_SignIn.php");
     }
+
+
     
 }
 else
