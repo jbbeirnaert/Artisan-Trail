@@ -14,7 +14,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="../Artisan-Trail">Home</a></li>
                     <li class="active"><a href="?action=Events">Events</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="?action=AboutUs">About Us</a></li>
                     <li><a href="#">Contact</a></li>
                     <li class="dropdown">
                         <?php
