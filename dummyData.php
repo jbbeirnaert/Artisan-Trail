@@ -1,7 +1,8 @@
 <?php
 
-//base classes
+//BASE CLASSES
 //These are used to recreate the chunks of JSON that are presumabley used in the server
+//fake generic openhours object
 function getOpenHours(){
     $fakeOpenHours = new StdClass();
     $fakeOpenHours->day = "Monday";
@@ -9,7 +10,7 @@ function getOpenHours(){
     $fakeOpenHours->opento = strtotime('2011-01-01T15:03:01.012345Z');
     return $fakeOpenHours;
 }
-
+//fake generic address object
 function getAddress(){
     $fakeAddress = new StdClass();
     $fakeAddress->name = "Standing Stone";
@@ -19,7 +20,7 @@ function getAddress(){
     $fakeAddress->zip = "16652";
     return $fakeAddress;
 }
-
+//fake generic location object
 function getLocation(){
     $fakeLocation = new StdClass();
     $fakeLocation->address = getAddress();
@@ -29,14 +30,14 @@ function getLocation(){
     $fakeLocation->openhours = getOpenHours();
     return $fakeLocation;
 }
-
+//fake generic price object
 function getPrice(){
     $fakePrice = new StdClass();
     $fakePrice->pricegroup = "Admission";
     $fakePrice->value = 10.99;
     return $fakePrice;
 }
-
+//fake generic contact object
 function getContact(){
     $fakeContact = new StdClass();
     $fakeContact->firstname = "Jo";
@@ -47,24 +48,27 @@ function getContact(){
     $fakeContact->address = array(getAddress(), getAddress());
     return $fakeContact;
 }
-
+//fake generic social object
 function getSocial(){
     $fakeSocial = new StdClass();
     $fakeSocial->medianame = "Facebook";
     $fakeSocial->link = "https://www.facebook.com/";
     return $fakeSocial;
 }
-
+//fake generic image object
+//note that this goes largely unused because the docs state that
+//the database is not currently equipped to handle images
 function getImage(){
     $fakeImage = new StdClass();
     $fakeImage->filetype = "png";
     $fakeImage->file = "imgs/pic.png";
     return $fakeImage;
 }
+//END BASE CLASSES
 
 //STANDIN//
-//These are standins for the functions that will retrieve JSON objects from the server
-
+//These are standins for the functions that will access the server
+//GET
 function getPublicMemberInfo($id){
     $fakeMemberInfo = new StdClass();
     $fakeMemberInfo->memberid = $id;
@@ -87,6 +91,7 @@ function getPublicMemberInfo($id){
 
 function getPrivateMemberInfo($id){
     $fakePrivateMember = new StdClass();
+    //This call was a shortcut
     $fakePrivateMember = json_decode(getPublicMemberInfo($id));
     $fakePrivateMember->email = "pat@patmail.com";
     $fakePrivateMember->subscription = false;
@@ -103,7 +108,7 @@ function getPrivateMemberInfo($id){
             break;
     }
 }
-
+//The ids were used so we could simulate multiple events
 function getEvent($id){
     $fakeEvent = new StdClass();
     $fakeEvent->eventid = 12;
@@ -134,14 +139,16 @@ function getEvent($id){
             return null;
     }
 }
-
+//returns list of event IDs
 function getEventList(){
     $fakeEventList = new StdClass();
     $fakeEventList->eventlist = array(12, 13);
     return json_encode($fakeEventList);
 }
 
+//POST
 //takes object from CreateNewUser and turns into JSON for server
+//each function has a direct argument version and a from PHP object version
 function createNewMemberFromObject($fakeMemberObject){
     if($fakeMemberObject->password == null
         ||$fakeMemberObject->email == null

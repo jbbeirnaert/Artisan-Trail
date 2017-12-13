@@ -1,6 +1,8 @@
+<!-- Contact Page -->
 <p>
     Do you have any questions, concerns, or suggestions? We'd love to hear from you!
 </p>
+<!-- Note that the form's action is not currently set to do anything -->
 <form name="contactform" method="post" action="#">
   <label for="name">Name:</label>
   <input  type="text" name="name" maxlength="50" size="30" required="true">
@@ -13,7 +15,7 @@
   <br/>
   <label for="comments">Your message:</label>
   <br/>
-  <textarea  name="comments" maxlength="1000" cols="25" rows="6" required="true"></textarea>
+  <textarea name="comments" maxlength="1000" cols="25" rows="6" required="true"></textarea>
   <br/>
   <input type="submit" value="Submit"> 
 </form>
@@ -22,7 +24,8 @@
 
 //php courtesy of
 //http://www.freecontactform.com/email_form.php
-
+//many of these functions are redundant with the html required tag
+//we left them in to keep cross-browser usability
 if(isset($_POST['email'])) {
  
     $email_to = "";
@@ -93,10 +96,9 @@ $headers = 'From: '.$email_from."\r\n".
 @mail($email_to, $email_subject, $email_message, $headers);  
 ?>
  
-<!-- include your own success html here -->
+<!--success html -->
  <p>Your message has been sent!</p>
  
 <?php
- 
 }
 ?>

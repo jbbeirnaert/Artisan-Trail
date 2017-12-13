@@ -1,7 +1,7 @@
 # Artisan-Trail
 Web Programming class
 
-Jean-Bryce Beirnaet && Simon Rosner
+Jean-Bryce Beirnaert && Simon Rosner
 12/13/2017
 
 Database Access:
@@ -31,3 +31,8 @@ Contact form:
     
     The form action on the same page must also be directed towards a php function
     Which will send the email
+
+Changes to Database:
+	Database needs a way to allow a password check. In it's current state,
+	there is no way to safely check if a user is authorized to perform events
+	restricted to logged in users.

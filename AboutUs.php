@@ -1,3 +1,5 @@
+<!-- About Us  -->
+<!-- Recommend replacing text. -->
 <p>
     The Artisan Trail project is a way to connect local artists with art fans.
 </p>
