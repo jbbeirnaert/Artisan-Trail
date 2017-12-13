@@ -2,20 +2,23 @@
 
 function GetUserNameFromId($myId)
 {
-	if($myId==42)
-	{
-		return "admin";
-	}
-	elseif ($myId==43)
-	{
-		return "newUser";
-	}
-	else
-	{
-		return "Guest";
-	}
+	$tempInfo = json_decode(getPrivateMemberInfo($myId));
+
+    if($tempInfo->memberid==42)
+    {
+        return "admin";
+    }
+    elseif ($tempInfo->memberid==43)
+    {
+        return "newUser";
+    }
+    else
+    {
+        return "Guest";
+    }
 }
 
+//Database cannot currentyl do this
 function userLoginById($userName, $password)
 {
 	if($userName=="admin" && $password=="admin")
@@ -28,6 +31,7 @@ function userLoginById($userName, $password)
 	}
 }
 
+//Database cannot currentyl do this
 function CheckIfUsernameNotExist($userName)
 {
 	if($userName=="admin")
@@ -40,8 +44,10 @@ function CheckIfUsernameNotExist($userName)
 	}
 }
 
-function CreateNewUser($userName, $passwordAlreadyHashed)
+function CreateNewUser($userName, $passwordAlreadyHashed, $name, $description)
 {
+	$tempInfo = json_decode(createNewMember($userName, $passwordAlreadyHashed, $name, $description));
+
 	if(true)
 	{
 		return 43;

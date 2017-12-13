@@ -10,7 +10,7 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password
                 if(strlen($_POST['password'])>=8)
                 {
                     $myLoginPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                    $myLoginId = CreateNewUser($_POST['email'], $myLoginPassword);
+                    $myLoginId = CreateNewUser($_POST['email'], $myLoginPassword, $_POST['name'], $_POST['description']);
                     if($myLoginId!=-1)
                     {
                         $_SESSION['id']=$myLoginId;
