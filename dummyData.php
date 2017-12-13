@@ -24,8 +24,8 @@ function getLocation(){
     $fakeLocation = new StdClass();
     $fakeLocation->address = getAddress();
     $fakeLocation->name = "Standing Stone";
-    $fakeLocation->longitude = 40.4936;
-    $fakeLocation->latitude = 78.0169;
+    $fakeLocation->latitude = 40.493856;
+    $fakeLocation->longitude = -78.016890;
     $fakeLocation->openhours = getOpenHours();
     return $fakeLocation;
 }

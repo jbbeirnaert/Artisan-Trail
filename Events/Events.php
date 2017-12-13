@@ -22,8 +22,8 @@
             echo "</a>";
             ?></td>
             <td><?php echo $event->location->address->name; ?></td>
-            <td><?php echo $event->startdatetime; ?></td>
-            <td><?php echo $event->enddatetime; ?></td>
+            <td><?php echo date("jS F, Y", $event->startdatetime); ?></td>
+            <td><?php echo date("jS F, Y", $event->enddatetime); ?></td>
             <td><?php echo $event->description; ?></td>
             <td><?php echo '$'. $event->price[0]->value; 
             //Unsure how implementation of price reflects usage.
