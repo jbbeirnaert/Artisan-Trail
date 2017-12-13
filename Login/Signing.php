@@ -1,12 +1,18 @@
+<!-- Basic sign up activity, we check if the data are in the $_POST, then we check if the if the datas are good, otherwise we go back to the log in/up page and we set the  $myLoginMessageError variable !-->
 <?php
+//all the variable exist ?
 if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['passwordBis']) && isset($_POST['name']) && isset($_POST['description']))
 {
+    //are they null ?
     if($_POST['name']!="" && $_POST['description']!="")
     {
+        //the two password are the same ?
         if($_POST['password']===$_POST['passwordBis'])
         {
+            //does the username already exist ?
             if(CheckIfUsernameNotExist($_POST['email']))
             {
+                //does the password has got at least 8 characters ?
                 if(strlen($_POST['password'])>=8)
                 {
                     $myLoginPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);

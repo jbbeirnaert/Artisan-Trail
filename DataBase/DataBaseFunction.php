@@ -1,5 +1,6 @@
 <?php
 
+//it return the username/email from your id
 function GetUserNameFromId($myId)
 {
 	$tempInfo = json_decode(getPrivateMemberInfo($myId));

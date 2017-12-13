@@ -1,14 +1,12 @@
+
+
+<!-- This is the main page, it redirects to every page in function of the $_GET['action'] variable ! With this way, the user has to go to this page to get the database connection, if he directly goes to /Events/Event.php, it can not interact with the server because he doesn't have the database connection. -->
+
 <?php
 
 //we start our session
 session_start();
-/*include("functionSql.php");
-$myDbConnection = myGetConnectionDB();
-//check our data connection !
-if($myDbConnection==null)
-    {
-        die("Connection failed: " . $conn->connect_error);
-    }*/
+
 ?>
 <!doctype html>
 <html>
@@ -29,8 +27,12 @@ if($myDbConnection==null)
     include("DataBase/DataBaseConnection.php");
     include("DataBase/DataBaseFunction.php");
     include("dummyData.php");
+
     //because of the session and to have a better understand of the project/code it is easier to create a website with a index, we use the GET variables to know which page include !
     //if the user is already connected we include the second index (listMachines/index.php), if he wanna logout, we destroy the session.
+    
+
+//Here, it is when the user is logged in !
     if(isset($_SESSION['id']))
     {
         if(isset($_GET['action'])) //depending of the $_GET['action'] we include a different file.
@@ -82,6 +84,7 @@ if($myDbConnection==null)
         }
     }else
     {
+        //Here, it is when the user is NOT logged in !
         if(isset($_GET['action'])) //depending of the $_GET['action'] we include a different file.
         {
             switch ($_GET['action'])

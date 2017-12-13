@@ -1,3 +1,4 @@
+<!-- Basic logging activity, we check if the data are in the $_POST, then we check if the login is good, otherwise we go back to the login page and we set the  $myLoginMessageError variable !-->
 <?php
 if(isset($_POST['email']) && isset($_POST['password']))
 {

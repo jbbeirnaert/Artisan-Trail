@@ -1,4 +1,5 @@
-   
+<!-- Give more detail of the event, and show on the map where it is ! -->
+
 <table border="1" cellpadding="10">
     <thead><tr><th>Name</th><th>Host</th><th>Location</th><th>Start</th><th>End</th><th>Age Range</th><th>Description</th><th>Price</th><th>Categories</th></tr></thead>
     <tbody>
@@ -30,6 +31,7 @@
     </tbody>
 </table>
 
+<!-- We show on the map where it is ! -->
 <div id="googleMap" style="width:50%;height:400px;"></div>
 <script>
       function initMap() {

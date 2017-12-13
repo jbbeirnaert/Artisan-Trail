@@ -1,3 +1,4 @@
+<!-- Two simple forms to do the sign in/up -->
 <form action="index.php?action=Logging" method="post" style="margin-bottom: 5em;">
         <div>
             <label for="email">Email: </label>
@@ -14,6 +15,7 @@
         </div>
 </form>
 
+<!-- It will echo a message if there is an error at the sign in/up. There variable is set up during the logging.php or the Signing.php -->
 <?php 
 if(isset($myLoginMessageError))
 {

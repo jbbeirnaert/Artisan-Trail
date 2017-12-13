@@ -1,5 +1,7 @@
-<?php
 
+
+<?php
+// if you are connected, we add a button to add some events !
 if(isset($_SESSION['id']))
 {
     echo '<div id="addFormEvent">';
@@ -9,7 +11,7 @@ if(isset($_SESSION['id']))
 
 ?>
 
-
+<!-- It will show all the efents in the database, you can click on the event name or on the host, you'll get more information ! -->   
 <table border="1" cellpadding="10">
     <thead><tr><th>Name</th><th>Host</th><th>Location</th><th>Start</th><th>End</th><th>Description</th><th>Price</th></tr></thead>
     <tbody>
@@ -44,12 +46,13 @@ if(isset($_SESSION['id']))
         </tr>
     <?php
     endforeach;
+    // if there is a post method, it means that we entered a new events, we add it !
     if(isset($_POST['name']))
     {
         createNewEvent(null, null, $_POST['name'], null, null, null, null, null, $_POST['location'], $_POST['longitude'], $_POST['latitude'], null, null, null, strtotime($_POST['start']), strtotime($_POST['end']), $_POST['description'], null, null, $_POST['price']);
         echo '<tr>';
-        echo "<td>".$_POST['name']."</td>";
-        echo "<td>".GetUserNameFromId($_SESSION['id'])."</td>";
+        echo "<td>".$_POST['name']."</td>"; // it should be a link, but we don't have the info because we don't have the database connection yet !
+        echo "<td>".GetUserNameFromId($_SESSION['id'])."</td>"; // it should be a link, but we don't have the info because we don't have the database connection yet !
         echo "<td>".$_POST['location']."</td>";
         $dateStart = new DateTime($_POST['start']);
         $dateEnd = new DateTime($_POST['end']);
@@ -67,6 +70,7 @@ if(isset($_SESSION['id']))
 
 
 <script type="text/javascript">
+    // the button at the top of the page allow to show a form to add a new event ! (need to b connected first !)
     
     $(document).ready(function(){
 
