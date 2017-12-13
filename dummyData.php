@@ -62,7 +62,7 @@ function getImage(){
     return $fakeImage;
 }
 
-//GET
+//STANDIN//
 //These are standins for the functions that will retrieve JSON objects from the server
 
 function getPublicMemberInfo(){

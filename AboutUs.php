@@ -13,5 +13,9 @@
 <br/>
 <p>
     The project is currently being developed by Juniata College
-    for the Huntingdon board of Tourism.
+    for the Huntingdon County Visitors Bureau.
+</p>
+<br/>
+<p>
+    Click here for more information on the <a href="http://raystown.org/locations/hcvb/hcvb.html">Huntingdon County Visitors Bureau</a>.
 </p>

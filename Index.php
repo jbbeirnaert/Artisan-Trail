@@ -51,10 +51,20 @@ if($myDbConnection==null)
                     include("Headers/HeaderEvents.php");
                     include('Events/Event.php');
                     break;
+                    
+                case "Person":
+                    include("Headers/HeaderEvents.php");
+                    include('People/Person.php');
+                    break;
 
                 case "AboutUs":
                     include("Headers/HeaderAboutUs.php");
                     include("AboutUs.php");
+                    break;
+                    
+                case "ContactUs":
+                    include("Headers/HeaderContactUs.php");
+                    include("ContactUs.php");
                     break;
 
                 default:
@@ -96,10 +106,20 @@ if($myDbConnection==null)
                     include("Headers/HeaderEvents.php");
                     include('Events/Event.php');
                     break;
+                    
+                case "Person":
+                    include("Headers/HeaderEvents.php");
+                    include('People/Person.php');
+                    break;
 
                 case "AboutUs":
                     include("Headers/HeaderAboutUs.php");
                     include("AboutUs.php");
+                    break;
+                    
+                case "ContactUs":
+                    include("Headers/HeaderContactUs.php");
+                    include("ContactUs.php");
                     break;
 
                 default:
