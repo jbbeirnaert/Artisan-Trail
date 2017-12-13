@@ -10,8 +10,8 @@
             <td><?php echo $event->name; ?></td>
             <td><?php echo $event->hostname; ?></td>
             <td><?php echo $event->location->address->name; ?></td>
-            <td><?php echo $event->startdatetime; ?></td>
-            <td><?php echo $event->enddatetime; ?></td>
+            <td><?php echo date("jS F, Y", $event->startdatetime); ?></td>
+            <td><?php echo date("jS F, Y", $event->enddatetime); ?></td>
             <td><?php echo $event->agefrom .' - '. $event->ageto; ?></td>
             <td><?php echo $event->description; ?></td>
             <td><?php echo '$'. $event->price[0]->value;
@@ -29,3 +29,19 @@
         </tr>
     </tbody>
 </table>
+
+<div id="googleMap" style="width:50%;height:400px;"></div>
+<script>
+      function initMap() {
+        var uluru = {lat: <?php Print($event->location->latitude) ?>, lng: <?php Print($event->location->longitude) ?>};
+        var map = new google.maps.Map(document.getElementById('googleMap'), {
+          zoom: 15,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxzh5So7f1MobbJBeEnohTYAWdjEq8cYs&callback=initMap"></script>
