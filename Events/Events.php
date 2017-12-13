@@ -7,8 +7,8 @@
     $eventIds = json_decode(getEventList(), true);
     foreach($eventIds['eventlist'] as $key): 
         $event = json_decode(getEvent($key));
-        $eventLink = "Event.php?event_id=".$event->eventid;
-        $personLink = "/People/Person.php?event_id=".$event->hostid;
+        $eventLink = "?action=Event&event_id=".$event->eventid;
+        $personLink = "?action=Person&event_id=".$event->hostid;
     ?>
         <tr>
             <td><?php 
