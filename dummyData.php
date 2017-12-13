@@ -221,7 +221,7 @@ function createNewEvent($email=null, $password=null, $name,
     $tempEvent->location->address->name = $addrName;
     $tempEvent->location->address->longitude = $longitude;
     $tempEvent->location->address->latitude = $latitude;
-    $tempEvent->location->address->openhours = StdClass();
+    $tempEvent->location->address->openhours = new StdClass();
     $tempEvent->location->address->openhours->day = $day;
     $tempEvent->location->address->openhours->openfrom = $openfrom;
     $tempEvent->location->address->openhours->opento = $opento;
