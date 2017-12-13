@@ -65,23 +65,37 @@ function getImage(){
 //STANDIN//
 //These are standins for the functions that will retrieve JSON objects from the server
 
-function getPublicMemberInfo(){
+function getPublicMemberInfo($id){
     $fakeMemberInfo = new StdClass();
-    $fakeMemberInfo->memberid = 1;
+    $fakeMemberInfo->memberid = 6;
     $fakeMemberInfo->name = "Pat";
     $fakeMemberInfo->description = "generic person";
     $fakeMemberInfo->image = getImage();
     $fakeMemberInfo->category = array("cat1", "cat2", "cat3");
     $fakeMemberInfo->social = array(getSocial(), getSocial());
     $fakeMemberInfo->contact = array(getContact(), getContact());
-    return json_encode($fakeMemberInfo);
+    switch($id){
+        case 6:
+            return json_encode($fakeMemberInfo);
+            break;
+        default:
+            return null;
+            break;
+    }
 }
 
 function getPrivateMemberInfo(){
     $fakePrivateMember = json_decode(getPublicMemberInfo);
     $fakePrivateMember->email = "pat@patmail.com";
     $fakePrivateMember->subscription = false;
-    return json_encode($fakePrivateMember);
+        switch($id){
+        case 6:
+            return json_encode($fakePrivateInfo);
+            break;
+        default:
+            return null;
+            break;
+    }
 }
 
 function getEvent($id){
