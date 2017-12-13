@@ -174,4 +174,58 @@ function createNewMember($email, $password, $name, $description,
 
     createNewMemberFromObject($tempMember);
 }
+
+function createNewEventFromObject($event){
+    //none of these should be null in the final version
+    if($event->name == null
+        ||$event->location == null
+        ||$event->startdatetime == null
+        ||$event->enddatetime == null
+        ||$event->description == null
+        //||$event->agefrom == null
+        //||$event->ageto == null
+    ){
+        return "error";
+    }else {
+        $event->eventid = 12; //the server would do this
+        $event = json_encode($event);
+        //SEVER STUFF:
+        return getEvent(json_decode($event)->eventid);
+    }
+}
+
+//none of these should be null in the final code
+//with the exception of $price which is optional
+//note that email and password need to come from somewhere
+//but password cannot be retrieved from the database 
+//We did not want to save the password in a cookie or session
+//Therefore the only option is to have the user reenter their email
+//and password as they enter a new event
+function createNewEvent($email=null, $password=null, $name,
+    $addrName=null, $street=null, $city=null, $state=null, $zip=null,
+    $locName, $longitude, $latitude, $day=null,
+    $openfrom=null, $opento=null, $start, $end, $description,
+    $agefrom=null, $ageto=null, $price){
+
+    $tempEvent = new StdClass();
+    $tempEvent->name = $name;
+    $tempEvent->location = new StdClass();
+    $tempEvent->location->address = new StdClass();
+    $tempEvent->location->address->name = $addrName;
+    $tempEvent->location->address->longitude = $longitude;
+    $tempEvent->location->address->latitude = $latitude;
+    $tempEvent->location->address->openhours = StdClass();
+    $tempEvent->location->address->openhours->day = $day;
+    $tempEvent->location->address->openhours->openfrom = $openfrom;
+    $tempEvent->location->address->openhours->opento = $opento;
+    $tempEvent->startdatetime = $start;
+    $tempEvent->enddatetime = $end;
+    $tempEvent->description = $description;
+    $tempEvent->agefrom = $agefrom;
+    $tempEvent->ageto = $ageto;
+    $tempEvent->price = new StdClass();
+    $tempEvent->price->value = $price;
+
+    createNewEventFromObject($tempEvent);
+}
 ?>
